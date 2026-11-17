@@ -1,0 +1,117 @@
+﻿@model Appontimant
+
+@{
+    ViewData["Title"] = "حجز موعد جديد";
+}
+
+<style>
+    .booking-card {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+    }
+
+    .booking-header {
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        color: #ffffff;
+        padding: 24px 30px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 6px;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+        padding: 10px 14px;
+        border: 1px solid #cbd5e1;
+        transition: 0.2s;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+</style>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="booking-card">
+                <!-- الهيدر -->
+                <div class="booking-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-1">
+                            <i class="fa-solid fa-calendar-plus me-2"></i> حجز موعد جديد
+                        </h4>
+                        <p class="mb-0 small opacity-75">يرجى إدخال بيانات المريض وتحديد الطبيب والموعد المناسب</p>
+                    </div>
+                </div>
+
+                <!-- الفورم -->
+                <div class="p-4 p-md-5">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row g-3">
+                            <!-- اسم المريض -->
+                            <div class="col-md-12">
+                                <label class="form-label">اسم المريض (Patient Name)</label>
+                                <input name="patientName" class="form-control" placeholder="أدخل اسم المريض بالكامل..." required />
+                            </div>
+
+                            <!-- اسم الطبيب -->
+                            <div class="col-md-6">
+                                <label asp-for="DoctorId" class="form-label">اسم الطبيب (Doctor Name)</label>
+                                <select asp-for="DoctorId" asp-items="ViewBag.Doctors" class="form-select" required>
+                                    <option value="">-- اختر الطبيب --</option>
+                                </select>
+                                <span asp-validation-for="DoctorId" class="text-danger small"></span>
+                            </div>
+
+                            <!-- التخصص -->
+                            <div class="col-md-6">
+                                <label class="form-label">التخصص (Specialization)</label>
+                                <select name="Specialization" asp-items="ViewBag.Specializations" class="form-select">
+                                    <option value="">-- اختر التخصص --</option>
+                                </select>
+                            </div>
+
+                            <!-- تاريخ الحجز (Data) -->
+                            <div class="col-md-6">
+                                <label asp-for="Data" class="form-label">تاريخ الحجز (Appointment Date)</label>
+                                <input asp-for="Data" type="date" class="form-control" required />
+                                <span asp-validation-for="Data" class="text-danger small"></span>
+                            </div>
+
+                            <!-- وقت الحجز (Time) -->
+                            <div class="col-md-6">
+                                <label asp-for="Time" class="form-label">وقت الحجز (Appointment Time)</label>
+                                <input asp-for="Time" type="time" class="form-control" required />
+                                <span asp-validation-for="Time" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- الأزرار -->
+                        <div class="d-flex gap-2 mt-4 pt-3 border-top">
+                            <button type="submit" class="btn btn-primary px-4 py-2 fw-bold">
+                                <i class="fa-solid fa-check me-1"></i> تأكيد الحجز
+                            </button>
+                            <a asp-action="page_appontiment" class="btn btn-outline-secondary px-4 py-2">
+                                إلغاء والعودة
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

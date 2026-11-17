@@ -1,0 +1,99 @@
+﻿@model List<Doctor>
+<form method="get" asp-controller="Home" asp-action="Doctor">
+
+    <div class="row mb-4">
+
+        <div class="col-md-5">
+            <input type="text"
+                   name="name"
+                   class="form-control" 
+                   placeholder="Search by Doctor Name" />
+        </div>
+
+        <div class="col-md-5">
+            <input type="text"
+                   name="specialzation"
+                   class="form-control"
+                   placeholder="Search by Specialization"  />
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                Search
+            </button>
+        </div>
+
+    </div>
+
+</form>
+<div class="container mt-5">
+
+    <div class="row justify-content-center g-4">
+        @foreach (var item in Model)
+            {
+        <div class="col-md-4 col-lg-3">
+             <div class="card shadow border-0">
+                
+                    <img src="~/Img/@item.Img"
+                    class="card-img-top"
+                    alt="Doctor Image"
+                    style="height: 300px; object-fit: cover;" />
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title fw-bold">
+                            @item.Name
+                        </h5>
+
+                        <p class="text-muted">
+                           @item.Specialization
+                        </p>
+
+                        <a href="/home/appontiment" class="btn btn-primary w-100">
+                            Book Appointment
+                        </a>
+
+                    </div>
+                
+            </div>
+            
+        </div>
+        }
+        <!-- Doctor 2 -->
+        <div class="col-md-4 col-lg-3">
+            <!-- ضع كارت الدكتور هنا -->
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="col-md-4 col-lg-3">
+            <!-- ضع كارت الدكتور هنا -->
+        </div>
+
+    </div>
+
+</div>
+<nav>
+    <ul class="pagination justify-content-center mt-4">
+
+        <li class="page-item">
+            <a class="page-link" href="/Home/Doctor?page=@(ViewBag.current_page - 1)">Previous</a>
+        </li>
+        
+            
+
+
+            @for (int i = 1; i <= ViewBag.total_page;i++)
+            {
+                <li class="page-item">
+                <a class="page-link" href="/Home/Doctor?page=@i">@i</a>
+                </li>
+            }
+            
+        
+
+        <li class="page-item">
+            <a class="page-link" href="/Home/Doctor?page=@(ViewBag.current_page+1)">Next</a>
+        </li>
+
+    </ul>
+</nav>

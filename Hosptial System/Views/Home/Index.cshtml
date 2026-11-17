@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        min-height: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-section {
+        width: 100vw;
+        height: 100vh;
+        min-height: 600px;
+        margin-left: calc((100% - 100vw) / 2);
+        background-image: linear-gradient( 90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15) ), url('/img/gemini_generated_image_pb5ywhpb5ywhpb5y.jpg');
+        background-size: cover;
+        background-position: center 25%;
+        background-repeat: no-repeat;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-content {
+        color: white;
+        width: 100%;
+        max-width: 700px;
+        padding: 0 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 65px;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 30px;
+    }
+
+    .hero-content p {
+        font-size: 19px;
+        line-height: 1.8;
+        color: #eeeeee;
+        max-width: 550px;
+    }
+
+    .hero-btn {
+        display: inline-block;
+        background: white;
+        color: black;
+        padding: 14px 32px;
+        margin-top: 20px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .hero-btn:hover {
+        background: #cccccc;
+        color: black;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            background-position: center top;
+        }
+
+        .hero-content {
+            padding: 30px;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+        }
+    }
+</style>
+
+<div class="hero-section">
+
+    <div class="hero-content">
+
+        <h1>
+            Your Health,<br />
+            Our Priority
+        </h1>
+
+        <p>
+            Welcome to MediCare Hospital.
+            Book your appointment with our professional doctors
+            and take care of your health.
+        </p>
+
+
+    </div>
+
+</div>
